@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>【生财有术深海圈】海外AI产品-交流群日报 - 2025-05-22</title>
+    <style>
+        /* 严格定义的CSS样式，确保风格一致性 */
+        :root {
+            --bg-primary: #0f0e17;
+            --bg-secondary: #1a1925;
+            --bg-tertiary: #252336;
+            --text-primary: #fffffe;
+            --text-secondary: #a7a9be;
+            --accent-primary: #ff8906;
+            --accent-secondary: #f25f4c;
+            --accent-tertiary: #e53170;
+            --accent-blue: #3da9fc;
+            --accent-purple: #7209b7;
+            --accent-cyan: #00b4d8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
+            width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--bg-secondary);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .meta-info span {
+            background-color: var(--bg-tertiary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        section {
+            background-color: var(--bg-secondary);
+            margin-bottom: 30px;
+            padding: 25px;
+        }
+        
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin: 15px 0 10px 0;
+        }
+        
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-secondary);
+            margin: 12px 0 8px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 卡片容器样式 */
+        .topics-container, .tutorials-container, .messages-container, 
+        .dialogues-container, .qa-container, .participants-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        /* 卡片样式 */
+        .topic-card, .tutorial-card, .message-card, 
+        .dialogue-card, .qa-card, .participant-item, .night-owl-item {
+            background-color: var(--bg-tertiary);
+            padding: 20px;
+        }
+        
+        /* 话题卡片 */
+        .topic-category {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .topic-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        
+        .keyword {
+            background-color: rgba(61, 169, 252, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        .topic-mentions {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        
+        /* 教程卡片 */
+        .tutorial-type {
+            display: inline-block;
+            background-color: var(--accent-secondary);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .tutorial-meta {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .tutorial-category {
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        /* 消息卡片 */
+        .message-meta {
+            margin-bottom: 10px;
+        }
+        
+        .message-meta span {
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        
+        .message-type-label { /* Renamed from .message-type to avoid conflict if used elsewhere */
+            background-color: var(--accent-tertiary);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+        
+        .priority {
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+        
+        .priority-high {
+            background-color: var(--accent-secondary);
+             color: var(--text-primary);
+        }
+        
+        .priority-medium {
+            background-color: var(--accent-primary);
+             color: var(--text-primary);
+        }
+        
+        .priority-low {
+            background-color: var(--accent-blue);
+             color: var(--text-primary);
+        }
+        
+        /* 对话卡片 */
+        .dialogue-type {
+            display: inline-block;
+            background-color: var(--accent-purple);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .dialogue-content {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .dialogue-highlight {
+            font-style: italic;
+            color: var(--accent-primary);
+            margin: 10px 0;
+            font-weight: 600;
+        }
+        
+        /* 问答卡片 */
+        .question {
+            margin-bottom: 15px;
+        }
+        
+        .question-meta, .answer-meta {
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .question-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            background-color: rgba(114, 9, 183, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        .answer {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        .accepted-badge {
+            background-color: var(--accent-primary);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        
+        /* 热度图 */
+        .heatmap-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .heat-item { /* Added wrapper for each heat item */
+            background-color: var(--bg-tertiary); /* Consistent with other cards */
+            padding: 15px;
+        }
+
+        .heat-topic {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .heat-bar {
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 5px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .heat-fill {
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+        /* 话唠榜 */
+        .participant-rank {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-right: 15px;
+            float: left;
+        }
+        
+        .participant-name {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .participant-count {
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+        }
+        
+        .participant-characteristics, .participant-words {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .characteristic {
+            background-color: rgba(242, 95, 76, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        .word {
+            background-color: rgba(229, 49, 112, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        /* 熬夜冠军 */
+         .night-owls-container { /* Added for consistency */
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .night-owl-item {
+            background: linear-gradient(135deg, #0f0e17 0%, #192064 100%);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .owl-crown {
+            font-size: 40px;
+            margin-right: 20px;
+        }
+        
+        .owl-name {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .owl-title {
+            color: var(--accent-primary);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .owl-time, .owl-messages {
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+        
+        .owl-note {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* 词云 - 云朵样式 */
+        .cloud-container {
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .cloud-wordcloud {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: var(--bg-tertiary);
+            border-radius: 50%;
+            box-shadow: 
+                40px 40px 0 -5px var(--bg-tertiary),
+                80px 10px 0 -10px var(--bg-tertiary),
+                110px 35px 0 -5px var(--bg-tertiary),
+                -40px 50px 0 -8px var(--bg-tertiary),
+                -70px 20px 0 -10px var(--bg-tertiary);
+            overflow: visible;
+        }
+        
+        .cloud-word {
+            position: absolute;
+            transform-origin: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .cloud-word:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        
+        .cloud-legend {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        
+        /* 底部 */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            background-color: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        .disclaimer {
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>【生财有术深海圈】海外AI产品-交流群日报</h1>
+        <p class="date">2025-05-22</p>
+        <div class="meta-info">
+            <span>总消息数：约350</span>
+            <span>活跃用户：约60</span>
+            <span>时间范围：00:29:48 - 22:32:21</span>
+        </div>
+    </header>
+
+    <!-- 1. 今日讨论热点 -->
+    <section class="hot-topics">
+        <h2>今日讨论热点</h2>
+        <div class="topics-container">
+            <div class="topic-card">
+                <h3>AI编程工具选择与使用 (Cursor, Trae, Augment)</h3>
+                <div class="topic-category">技术讨论</div>
+                <p class="topic-summary">群友热烈讨论了各类AI编程辅助工具，特别是Cursor的各种用法、版本和自定义模式。Trae因体验不佳被多次劝退，Augment作为备选项被提及。大家分享了Cursor的购买、学生优惠以及结合MCP等场景提高效率的经验。</p>
+                <div class="topic-keywords">
+                    <span class="keyword">Cursor</span>
+                    <span class="keyword">Trae</span>
+                    <span class="keyword">Augment</span>
+                    <span class="keyword">AI编程</span>
+                    <span class="keyword">VSCode插件</span>
+                    <span class="keyword">提示词</span>
+                </div>
+                <div class="topic-mentions">提及次数：约45+</div>
+            </div>
+            <div class="topic-card">
+                <h3>Claude账号注册、使用与API问题</h3>
+                <div class="topic-category">AI模型与API</div>
+                <p class="topic-summary">围绕Claude账号的注册、封号问题及API使用展开讨论。群友分享了通过静态IP、VPS、指纹浏览器等方式避免封号的经验，以及API的费用和第三方调用渠道，如OpenRouter、2233.ai等。</p>
+                <div class="topic-keywords">
+                    <span class="keyword">Claude</span>
+                    <span class="keyword">API</span>
+                    <span class="keyword">封号</span>
+                    <span class="keyword">静态IP</span>
+                    <span class="keyword">VPS</span>
+                    <span class="keyword">接码平台</span>
+                </div>
+                <div class="topic-mentions">提及次数：约30+</div>
+            </div>
+            <div class="topic-card">
+                <h3>深海圈与航海活动的选择</h3>
+                <div class="topic-category">社群活动</div>
+                <p class="topic-summary">群友探讨了在已加入深海圈的情况下，是否还有必要参加“航海”活动。助教建议无建站经验者可参加Web航海作为基础补充，而已有经验者可聚焦深海圈。部分成员分享了同时报名或只选其一的考量。</p>
+                <div class="topic-keywords">
+                    <span class="keyword">深海圈</span>
+                    <span class="keyword">航海</span>
+                    <span class="keyword">报名</span>
+                    <span class="keyword">Web开发</span>
+                    <span class="keyword">精力分配</span>
+                </div>
+                <div class="topic-mentions">提及次数：约20+</div>
+            </div>
+             <div class="topic-card">
+                <h3>大铭🌱的AI辅助开发五步法</h3>
+                <div class="topic-category">开发方法论</div>
+                <p class="topic-summary">大铭🌱分享了其使用Cursor进行AI辅助开发的“五步法”（Local Issues + RR / PLAN / Agent），包括需求理解、代码分析、任务规划和Agent执行，强调了上下文管理的重要性。该方法论引起了群友的积极反馈和学习。</p>
+                <div class="topic-keywords">
+                    <span class="keyword">开发流程</span>
+                    <span class="keyword">Cursor</span>
+                    <span class="keyword">RR/PLAN/Agent</span>
+                    <span class="keyword">软件工程</span>
+                    <span class="keyword">AI辅助</span>
+                </div>
+                <div class="topic-mentions">提及次数：约15+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 实用教程与资源分享 -->
+    <section class="tutorials">
+        <h2>实用教程与资源分享</h2>
+        <div class="tutorials-container">
+            <div class="tutorial-card">
+                <div class="tutorial-type">RESOURCE</div>
+                <h3>生财航海手册</h3>
+                <div class="tutorial-meta">
+                    <span class="shared-by">分享者：YS | 上海</span>
+                    <span class="share-time">10:52:57</span>
+                </div>
+                <p class="tutorial-summary">分享了生财航海手册的链接，供群友参考。提到即使不报名航海，手册内容通常也是可以查看的。</p>
+                <div class="key-points">
+                    <h4>要点：</h4>
+                    <ul>
+                        <li>航海活动官方手册</li>
+                        <li>可作为补充学习材料</li>
+                    </ul>
+                </div>
+                <div class="tutorial-link">
+                    <a href="https://scys.com/view/docx/ZKwDdbxZ9odAKSxvMl3culEdnaf" class="link valid">查看原文: scys.com</a>
+                </div>
+                <div class="tutorial-category">分类：学习资料</div>
+            </div>
+            <div class="tutorial-card">
+                <div class="tutorial-type">TUTORIAL</div>
+                <h3>Cursor使用本地文件进行issues管理</h3>
+                <div class="tutorial-meta">
+                    <span class="shared-by">分享者：大铭🌱</span>
+                    <span class="share-time">11:53:01</span>
+                </div>
+                <p class="tutorial-summary">大铭🌱分享了其撰写的关于如何使用Cursor结合本地issues文件进行代码自动生成的教程文章，详细介绍了其开发工作流的一部分。</p>
+                <div class="key-points">
+                    <h4>要点：</h4>
+                    <ul>
+                        <li>Cursor高级用法</li>
+                        <li>结合敏捷开发思想管理任务</li>
+                        <li>提升AI编程效率</li>
+                    </ul>
+                </div>
+                <div class="tutorial-link">
+                    <a href="https://mp.weixin.qq.com/s/3ELIIo5NM4bERCNlFEOC0g" class="link valid">查看原文: mp.weixin.qq.com</a>
+                </div>
+                <div class="tutorial-category">分类：AI编程工具</div>
+            </div>
+            <div class="tutorial-card">
+                <div class="tutorial-type">RESOURCE</div>
+                <h3>Cursor RR/Plan/Act Agent设置文档</h3>
+                <div class="tutorial-meta">
+                    <span class="shared-by">分享者：大铭🌱 (通过转发历史)</span>
+                    <span class="share-time">11:56:46 (引用时间)</span>
+                </div>
+                <p class="tutorial-summary">大铭🌱通过转发历史分享了一个飞书文档，详细说明了其在Cursor中设置RR (Research & Review), Plan, 和 Act Agent的自定义模式和指令，是其五步法开发模式的核心配置。</p>
+                <div class="key-points">
+                    <h4>要点：</h4>
+                    <ul>
+                        <li>Cursor自定义模式配置</li>
+                        <li>提升代码生成准确性</li>
+                        <li>上下文管理策略</li>
+                    </ul>
+                </div>
+                <div class="tutorial-link">
+                    <a href="https://rxas35pmvn.feishu.cn/docx/Zj1qdY4jDoBsIaxzvjKctZHUn9d?from=from_copylink" class="link valid">查看原文: rxas35pmvn.feishu.cn</a>
+                </div>
+                <div class="tutorial-category">分类：AI编程工具配置</div>
+            </div>
+             <div class="tutorial-card">
+                <div class="tutorial-type">RESOURCE</div>
+                <h3>API调用平台分享</h3>
+                <div class="tutorial-meta">
+                    <span class="shared-by">分享者：Moore 助教 / 书虫——麻雀API找我</span>
+                    <span class="share-time">12:17:22 / 13:01:16</span>
+                </div>
+                <p class="tutorial-summary">Moore助教分享了bewildcard (2233.ai) 和 genspark.ai作为Claude等模型的调用渠道。书虫分享了ismaque.org作为便宜的API选择。</p>
+                <div class="key-points">
+                    <h4>要点：</h4>
+                    <ul>
+                        <li>第三方API调用平台</li>
+                        <li>成本与模型选择考量</li>
+                    </ul>
+                </div>
+                 <div class="tutorial-link">
+                    <a href="#" class="link valid">相关讨论：群内搜索 "2233.ai", "genspark.ai", "ismaque.org"</a>
+                </div>
+                <div class="tutorial-category">分类：AI服务与API</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 重要消息汇总 -->
+    <section class="important-messages">
+        <h2>重要消息汇总</h2>
+        <div class="messages-container">
+            <div class="message-card">
+                <div class="message-meta">
+                    <span class="time">10:23:15</span>
+                    <span class="sender">雪雪@生财(wxid_el8kxivhhtls22)</span>
+                    <span class="message-type-label">ANNOUNCEMENT</span>
+                    <span class="priority priority-high">优先级：高</span>
+                </div>
+                <p class="message-content">欢迎加入【生财有术深海圈】海外AI产品-交流群，并公布本期深海圈安排。</p>
+                <div class="message-full-content">
+                    <p>圈友们，大家好呀，欢迎加入【生财有术深海圈】海外AI产品-交流群<br>
+                    我是@平台运营-雪雪，接下来的日子里，我们就要一起在2025年的深海圈里一起乘风破浪啦~<br>
+                    ⏰咱们本期深海圈安排如下：<br>
+                    ① 邀请进群：5月21日到5月22日，鱼丸陆续邀请大家登船；<br>
+                    ② 群内破冰：5月23日早上10点到17点，群里大家自由破冰&链接；<br>
+                    ③ 开营直播：5月23日 20:00，举行【开营直播】；<br>
+                    ⌛现在，圈友还在陆续进群中，咱们先【保持安静】，请耐心等等[抱拳]</p>
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-meta">
+                    <span class="time">15:02:37</span>
+                    <span class="sender">欢欢-生财(wxid_bdbgo44zkrrv22)</span>
+                    <span class="message-type-label">NOTICE</span>
+                    <span class="priority priority-medium">优先级：中</span>
+                </div>
+                <p class="message-content">提醒大家目前仍在进群阶段，请等待明天开营后再进行正式讨论。</p>
+                <div class="message-full-content">
+                    <p>咱们还在进群阶段，大家等明天开营后再正式讨论哈，还有小伙伴没进群</p>
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-meta">
+                    <span class="time">15:42:10</span>
+                    <span class="sender">雪雪@生财(wxid_el8kxivhhtls22)</span>
+                    <span class="message-type-label">ANNOUNCEMENT</span>
+                    <span class="priority priority-high">优先级：高</span>
+                </div>
+                <p class="message-content">再次重申欢迎信息及深海圈活动安排，提醒保持安静等待全员进群。</p>
+                <div class="message-full-content">
+                    <p>(内容同10:23:15的通知)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 有趣对话或金句 -->
+    <section class="interesting-dialogues">
+        <h2>有趣对话或金句</h2>
+        <div class="dialogues-container">
+            <div class="dialogue-card">
+                <div class="dialogue-type">QUOTE</div>
+                <div class="dialogue-content">
+                    <div class="message">
+                        <div class="message-meta">
+                            <span class="speaker">刘小排(liuxiaopai)</span>
+                            <span class="time">11:10:18</span>
+                        </div>
+                        <p class="message-content">不用用Trae，不要用Trae，不要用Trae，不要用Trae，不要用Trae</p>
+                    </div>
+                </div>
+                <div class="dialogue-highlight">小排老师五连发强调避坑Trae，态度坚决。</div>
+                <div class="dialogue-topic">相关话题：AI编程工具选择</div>
+            </div>
+            <div class="dialogue-card">
+                <div class="dialogue-type">DIALOGUE</div>
+                <div class="dialogue-content">
+                     <div class="message">
+                        <div class="message-meta">
+                            <span class="speaker">大铭🌱(wxid_c7zf4hpjug5322)</span>
+                            <span class="time">10:58:15</span>
+                        </div>
+                        <p class="message-content">MCP 不用报名，在这里使用就可以，我是 MCP 的教练，有啥 MCP 的直接在这问我就行</p>
+                    </div>
+                    <div class="message">
+                        <div class="message-meta">
+                            <span class="speaker">droidHZ(wxid_5396913969012)</span>
+                            <span class="time">10:59:22</span>
+                        </div>
+                        <p class="message-content">[666]  大佬云集呀，昨天报了mcp</p>
+                    </div>
+                </div>
+                <div class="dialogue-highlight">大铭教练主动提供MCP指导，体现社群互助精神。</div>
+                <div class="dialogue-topic">相关话题：MCP航海与学习</div>
+            </div>
+            <div class="dialogue-card">
+                <div class="dialogue-type">QUOTE</div>
+                <div class="dialogue-content">
+                    <div class="message">
+                        <div class="message-meta">
+                            <span class="speaker">良辰美 | 助教(wxid_8riqfa4drs6222)</span>
+                            <span class="time">15:01:12</span>
+                        </div>
+                        <p class="message-content">争取每天跟AI聊天的时间超过微信</p>
+                    </div>
+                </div>
+                <div class="dialogue-highlight">助教鼓励大家多与AI互动，深度学习。</div>
+                <div class="dialogue-topic">相关话题：AI学习方法</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 问题与解答 -->
+    <section class="questions-answers">
+        <h2>问题与解答</h2>
+        <div class="qa-container">
+            <div class="qa-card">
+                <div class="question">
+                    <div class="question-meta">
+                        <span class="asker">灵然视邃(wxid_8za0t0e4cbox22)</span>
+                        <span class="time">10:50:50</span>
+                    </div>
+                    <p class="question-content">深海圈的圈友们，我们还有必要参加航海吗[破涕为笑]</p>
+                    <div class="question-tags">
+                        <span class="tag">航海</span>
+                        <span class="tag">深海圈</span>
+                        <span class="tag">活动选择</span>
+                    </div>
+                </div>
+                <div class="answers">
+                    <div class="answer">
+                        <div class="answer-meta">
+                            <span class="responder">良辰美 | 助教(wxid_8riqfa4drs6222)</span>
+                            <span class="time">10:53:14</span>
+                            <span class="accepted-badge">助教回答</span>
+                        </div>
+                        <p class="answer-content">没有上过站的建议参加，有做过网站上线的，可以聚焦深海圈，web航海相当于是浅水区，这里是深水区</p>
+                    </div>
+                </div>
+            </div>
+            <div class="qa-card">
+                <div class="question">
+                    <div class="question-meta">
+                        <span class="asker">离心之巅(wxid_zct5h7skjhaq22)</span>
+                        <span class="time">11:09:53</span>
+                    </div>
+                    <p class="question-content">请问下小白的话上手Trae好些还是cursor呢？新版本的cursor有点不太会用了[捂脸]</p>
+                    <div class="question-tags">
+                        <span class="tag">AI工具</span>
+                        <span class="tag">Cursor</span>
+                        <span class="tag">Trae</span>
+                        <span class="tag">新手选择</span>
+                    </div>
+                </div>
+                <div class="answers">
+                    <div class="answer">
+                        <div class="answer-meta">
+                            <span class="responder">刘小排(liuxiaopai)</span>
+                            <span class="time">11:10:18</span>
+                            <span class="accepted-badge">导师回答</span>
+                        </div>
+                        <p class="answer-content">不用用Trae，不要用Trae，不要用Trae，不要用Trae，不要用Trae</p>
+                    </div>
+                     <div class="answer">
+                        <div class="answer-meta">
+                            <span class="responder">＃七哥-福州(wxid_kk5v4tfwaysr22)</span>
+                            <span class="time">11:10:17</span>
+                        </div>
+                        <p class="answer-content">那就退回4.9 (指Cursor版本)</p>
+                    </div>
+                </div>
+            </div>
+             <div class="qa-card">
+                <div class="question">
+                    <div class="question-meta">
+                        <span class="asker">雨生(wxid_tlpm1lj3qv2522)</span>
+                        <span class="time">11:21:14</span>
+                    </div>
+                    <p class="question-content">如果是实体产品的话，会看其他平台卖起来的品去跟，但是做Ai产品，不知道该怎么找到大的市场需求和参考[疑问]</p>
+                    <div class="question-tags">
+                        <span class="tag">AI产品</span>
+                        <span class="tag">市场需求</span>
+                        <span class="tag">调研</span>
+                    </div>
+                </div>
+                <div class="answers">
+                    <div class="answer">
+                        <div class="answer-meta">
+                            <span class="responder">良辰美 | 助教(wxid_8riqfa4drs6222)</span>
+                            <span class="time">11:22:27</span>
+                            <span class="accepted-badge">助教回答</span>
+                        </div>
+                        <p class="answer-content">生财出海小组精华帖是最好信息源</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 群内数据可视化 -->
+    <section class="analytics">
+        <h2>群内数据可视化</h2>
+        
+        <h3>话题热度</h3>
+        <div class="heatmap-container">
+            <div class="heat-item">
+                <div class="heat-topic">AI编程工具 (Cursor, Trae)</div>
+                <div class="heat-percentage">35%</div>
+                <div class="heat-bar">
+                    <div class="heat-fill" style="width: 35%; background-color: #3da9fc;"></div>
+                </div>
+                <div class="heat-count">约45+条消息</div>
+            </div>
+            <div class="heat-item">
+                <div class="heat-topic">Claude账号与API</div>
+                <div class="heat-percentage">25%</div>
+                <div class="heat-bar">
+                    <div class="heat-fill" style="width: 25%; background-color: #f25f4c;"></div>
+                </div>
+                <div class="heat-count">约30+条消息</div>
+            </div>
+            <div class="heat-item">
+                <div class="heat-topic">深海圈与航海活动</div>
+                <div class="heat-percentage">20%</div>
+                <div class="heat-bar">
+                    <div class="heat-fill" style="width: 20%; background-color: #7209b7;"></div>
+                </div>
+                <div class="heat-count">约20+条消息</div>
+            </div>
+             <div class="heat-item">
+                <div class="heat-topic">大铭🌱的五步法</div>
+                <div class="heat-percentage">15%</div>
+                <div class="heat-bar">
+                    <div class="heat-fill" style="width: 15%; background-color: #e53170;"></div>
+                </div>
+                <div class="heat-count">约15+条消息</div>
+            </div>
+        </div>
+        
+        <h3>话唠榜</h3>
+        <div class="participants-container">
+            <div class="participant-item">
+                <div class="participant-rank">1</div>
+                <div class="participant-info">
+                    <div class="participant-name">大铭🌱</div>
+                    <div class="participant-count">约22条消息</div>
+                    <div class="participant-characteristics">
+                        <span class="characteristic">教练</span>
+                        <span class="characteristic">乐于分享</span>
+                        <span class="characteristic">技术流</span>
+                    </div>
+                    <div class="participant-words">
+                        <span class="word">Cursor</span>
+                        <span class="word">MCP</span>
+                        <span class="word">Agent</span>
+                        <span class="word">代码</span>
+                    </div>
+                </div>
+            </div>
+             <div class="participant-item">
+                <div class="participant-rank">2</div>
+                <div class="participant-info">
+                    <div class="participant-name">果潇洒-热心小白</div>
+                    <div class="participant-count">约18条消息</div>
+                    <div class="participant-characteristics">
+                        <span class="characteristic">积极提问</span>
+                        <span class="characteristic">学习者</span>
+                        <span class="characteristic">小白代表</span>
+                    </div>
+                    <div class="participant-words">
+                        <span class="word">小白</span>
+                        <span class="word">编程</span>
+                        <span class="word">请教</span>
+                        <span class="word">GPT</span>
+                    </div>
+                </div>
+            </div>
+            <div class="participant-item">
+                <div class="participant-rank">3</div>
+                <div class="participant-info">
+                    <div class="participant-name">银河星游</div>
+                    <div class="participant-count">约17条消息</div>
+                    <div class="participant-characteristics">
+                        <span class="characteristic">技术探讨</span>
+                        <span class="characteristic">工具控</span>
+                        <span class="characteristic">问题追索</span>
+                    </div>
+                    <div class="participant-words">
+                        <span class="word">Claude</span>
+                        <span class="word">API</span>
+                        <span class="word">Cursor</span>
+                        <span class="word">VPS</span>
+                    </div>
+                </div>
+            </div>
+             <div class="participant-item">
+                <div class="participant-rank">4</div>
+                <div class="participant-info">
+                    <div class="participant-name">良辰美 | 助教</div>
+                    <div class="participant-count">约12条消息</div>
+                    <div class="participant-characteristics">
+                        <span class="characteristic">助教</span>
+                        <span class="characteristic">答疑解惑</span>
+                        <span class="characteristic">指点方向</span>
+                    </div>
+                    <div class="participant-words">
+                        <span class="word">航海</span>
+                        <span class="word">深海圈</span>
+                        <span class="word">Cursor</span>
+                        <span class="word">建议</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>熬夜冠军</h3>
+        <div class="night-owls-container">
+            <div class="night-owl-item">
+                <div class="owl-crown" title="熬夜冠军">👑</div>
+                <div class="owl-info">
+                    <div class="owl-name">李李｜生财鱼丸（早10晚7）</div>
+                    <div class="owl-title">早鸟管理员</div>
+                    <div class="owl-time">最晚活跃时间：00:29:48</div>
+                    <div class="owl-messages">深夜消息数：1</div>
+                    <div class="owl-last-message">"李李｜生财鱼丸（早10晚7）"邀请"峰池"加入了群聊</div>
+                    <div class="owl-note">注：熬夜时段定义为00:00-06:00，此为当日最早的群管理操作。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 词云 -->
+    <section class="word-cloud">
+        <h2>热门词云</h2>
+        <div class="cloud-container">
+            <div class="cloud-wordcloud" id="word-cloud">
+                <span class="cloud-word" style="left: 280px; top: 100px; font-size: 42px; color: #00b4d8; transform: rotate(-10deg); font-weight: bold;">Cursor</span>
+                <span class="cloud-word" style="left: 150px; top: 160px; font-size: 36px; color: #4cc9f0; transform: rotate(8deg); font-weight: bold;">AI</span>
+                <span class="cloud-word" style="left: 400px; top: 170px; font-size: 30px; color: #f25f4c; transform: rotate(-5deg);">Claude</span>
+                <span class="cloud-word" style="left: 240px; top: 210px; font-size: 28px; color: #ff8906; transform: rotate(12deg);">航海</span>
+                <span class="cloud-word" style="left: 380px; top: 70px; font-size: 26px; color: #e53170; transform: rotate(0deg);">API</span>
+                <span class="cloud-word" style="left: 100px; top: 90px; font-size: 24px; color: #7209b7; transform: rotate(-15deg);">深海圈</span>
+                <span class="cloud-word" style="left: 450px; top: 250px; font-size: 22px; color: #3da9fc; transform: rotate(5deg);">代码</span>
+                <span class="cloud-word" style="left: 180px; top: 280px; font-size: 20px; color: #00b4d8; transform: rotate(-8deg);">需求</span>
+                <span class="cloud-word" style="left: 300px; top: 300px; font-size: 23px; color: #4361ee; transform: rotate(15deg);">工具</span>
+                <span class="cloud-word" style="left: 320px; top: 190px; font-size: 18px; color: #7209b7; transform: rotate(-12deg);">助教</span>
+                <span class="cloud-word" style="left: 480px; top: 130px; font-size: 20px; color: #f25f4c; transform: rotate(10deg);">问题</span>
+                <span class="cloud-word" style="left: 80px; top: 230px; font-size: 19px; color: #ff8906; transform: rotate(3deg);">报名</span>
+                 <span class="cloud-word" style="left: 200px; top: 50px; font-size: 25px; color: #3da9fc; transform: rotate(-3deg);">产品</span>
+
+            </div>
+            
+            <div class="cloud-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #00b4d8;"></span>
+                    <span class="legend-label">技术与工具</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #ff8906;"></span>
+                    <span class="legend-label">社群与学习</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #7209b7;"></span>
+                    <span class="legend-label">核心概念</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. 页面底部 -->
+    <footer>
+        <p>数据来源：【生财有术深海圈】海外AI产品-交流群聊天记录</p>
+        <p>生成时间：<span class="generation-time">2025-05-23 10:00:00</span></p>
+        <p>统计周期：2025-05-22 (00:29:48 - 22:32:21)</p>
+        <p class="disclaimer">免责声明：本报告内容基于群聊公开讨论，如有不当内容或侵权问题请联系管理员处理。</p>
+    </footer>
+</body>
+</html>
