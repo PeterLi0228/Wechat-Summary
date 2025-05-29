@@ -1,8 +1,22 @@
 import { ChatDate, parseFileDate, estimateMessageCount } from './chatUtils';
 
+// 获取正确的基础路径
+const getBasePath = (): string => {
+  // 在开发环境中使用根路径，在生产环境中使用GitHub Pages路径
+  if (import.meta.env.DEV) {
+    return '';
+  }
+  // 检查当前URL是否包含GitHub Pages路径
+  if (window.location.pathname.includes('/wechat-summary')) {
+    return '/wechat-summary';
+  }
+  return '';
+};
+
 // 发现可用的聊天文件
 const discoverChatFiles = async (): Promise<string[]> => {
   const files: string[] = [];
+  const basePath = getBasePath();
   
   // 尝试一些常见的日期格式来发现文件
   // 这里可以根据实际需要扩展日期范围
@@ -21,7 +35,7 @@ const discoverChatFiles = async (): Promise<string[]> => {
   for (const dateStr of dates) {
     // 检查TXT文件
     try {
-      const response = await fetch(`/chatlogs/${dateStr}.txt`, { method: 'HEAD' });
+      const response = await fetch(`${basePath}/chatlogs/${dateStr}.txt`, { method: 'HEAD' });
       if (response.ok) {
         files.push(`${dateStr}.txt`);
       }
@@ -31,7 +45,7 @@ const discoverChatFiles = async (): Promise<string[]> => {
     
     // 检查HTML文件
     try {
-      const response = await fetch(`/chatlogs/${dateStr}.html`, { method: 'HEAD' });
+      const response = await fetch(`${basePath}/chatlogs/${dateStr}.html`, { method: 'HEAD' });
       if (response.ok) {
         files.push(`${dateStr}.html`);
       }
@@ -113,7 +127,8 @@ export const fetchChatFile = async (date: string, type: 'html' | 'txt'): Promise
     // 将日期格式从 2025-05-26 转换为 20250526
     const dateStr = date.replace(/-/g, '');
     const filename = `${dateStr}.${type}`;
-    const url = `/chatlogs/${filename}`;
+    const basePath = getBasePath();
+    const url = `${basePath}/chatlogs/${filename}`;
     
     const response = await fetch(url);
     if (!response.ok) {
