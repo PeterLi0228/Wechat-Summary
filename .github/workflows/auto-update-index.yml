@@ -1,0 +1,52 @@
+name: Auto Update File Index
+
+on:
+  push:
+    paths:
+      - 'chatlogs/**'
+    branches:
+      - main
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Update file index
+      run: npm run update-index
+    
+    - name: Build project
+      run: npm run build
+    
+    - name: Copy build files to root
+      run: |
+        cp dist/index.html .
+        cp dist/404.html .
+        rm -rf assets/
+        cp -r dist/assets .
+        cp chatlogs/index.json .
+    
+    - name: Commit and push if changed
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "auto: update file index and rebuild"
+          git push
+        fi 
