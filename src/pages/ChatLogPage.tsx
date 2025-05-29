@@ -216,18 +216,7 @@ const ChatLogPage = () => {
                     
                     // 检查当前日期是否有对应的HTML文件
                     try {
-                      // 先检查文件是否存在
-                      const dateStr = date!.replace(/-/g, '');
-                      const htmlUrl = `/chatlogs/${dateStr}.html`;
-                      console.log('检查HTML文件:', htmlUrl);
-                      
-                      const checkResponse = await fetch(htmlUrl, { method: 'HEAD' });
-                      console.log('HEAD请求响应状态:', checkResponse.status, checkResponse.statusText);
-                      
-                      if (!checkResponse.ok) {
-                        throw new Error(`HTML文件不存在: ${checkResponse.status}`);
-                      }
-                      
+                      // 直接使用fetchChatFile函数，它已经处理了正确的路径
                       const htmlForCurrentDate = await fetchChatFile(date!, 'html');
                       console.log('找到对应日期的HTML文件，文件大小:', htmlForCurrentDate.length);
                       console.log('HTML内容前100字符:', htmlForCurrentDate.substring(0, 100));
@@ -236,7 +225,7 @@ const ChatLogPage = () => {
                       if (htmlForCurrentDate.includes('<!DOCTYPE html>') && 
                           !htmlForCurrentDate.includes('injectIntoGlobalHoo') && // 不是Vite的index.html
                           !htmlForCurrentDate.includes('<script type="module">') && // 不是React应用页面
-                          (htmlForCurrentDate.includes('微信') || htmlForCurrentDate.includes('聊天记录') || htmlForCurrentDate.includes('chat'))) {
+                          (htmlForCurrentDate.includes('微信') || htmlForCurrentDate.includes('聊天记录') || htmlForCurrentDate.includes('chat') || htmlForCurrentDate.includes('AI 产品创建大本营'))) {
                         // 如果是真正的聊天记录HTML文件，在新窗口中打开
                         const newWindow = window.open('', '_blank');
                         if (newWindow) {
