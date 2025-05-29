@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>AI 产品创建大本营日报 - 2025-05-28</title>
+    <style>
+        /* 严格定义的CSS样式，确保风格一致性 */
+        :root {
+            --bg-primary: #0f0e17;
+            --bg-secondary: #1a1925;
+            --bg-tertiary: #252336;
+            --text-primary: #fffffe;
+            --text-secondary: #a7a9be;
+            --accent-primary: #ff8906;
+            --accent-secondary: #f25f4c;
+            --accent-tertiary: #e53170;
+            --accent-blue: #3da9fc;
+            --accent-purple: #7209b7;
+            --accent-cyan: #00b4d8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
+            width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--bg-secondary);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .meta-info span {
+            background-color: var(--bg-tertiary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        section {
+            background-color: var(--bg-secondary);
+            margin-bottom: 30px;
+            padding: 25px;
+        }
+        
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin: 15px 0 10px 0;
+        }
+        
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-secondary);
+            margin: 12px 0 8px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 卡片容器样式 */
+        .topics-container, .tutorials-container, .messages-container, 
+        .dialogues-container, .qa-container, .participants-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        /* 卡片样式 */
+        .topic-card, .tutorial-card, .message-card, 
+        .dialogue-card, .qa-card, .participant-item, .night-owl-item {
+            background-color: var(--bg-tertiary);
+            padding: 20px;
+        }
+        
+        /* 话题卡片 */
+        .topic-category {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .topic-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        
+        .keyword {
+            background-color: rgba(61, 169, 252, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        .topic-mentions {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        
+        /* 教程卡片 */
+        .tutorial-type {
+            display: inline-block;
+            background-color: var(--accent-secondary);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .tutorial-meta {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .tutorial-category {
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        /* 消息卡片 */
+        .message-meta {
+            margin-bottom: 10px;
+        }
+        
+        .message-meta span {
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        
+        .message-type {
+            background-color: var(--accent-tertiary);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+        
+        .priority {
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+        
+        .priority-high {
+            background-color: var(--accent-secondary);
+        }
+        
+        .priority-medium {
+            background-color: var(--accent-primary);
+        }
+        
+        .priority-low {
+            background-color: var(--accent-blue);
+        }
+        
+        /* 对话卡片 */
+        .dialogue-type {
+            display: inline-block;
+            background-color: var(--accent-purple);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .dialogue-content {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .dialogue-highlight {
+            font-style: italic;
+            color: var(--accent-primary);
+            margin: 10px 0;
+            font-weight: 600;
+        }
+        
+        /* 问答卡片 */
+        .question {
+            margin-bottom: 15px;
+        }
+        
+        .question-meta, .answer-meta {
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .question-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            background-color: rgba(114, 9, 183, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        .answer {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        .accepted-badge {
+            background-color: var(--accent-primary);
+            color: var(--text-primary);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        
+        /* 热度图 */
+        .heatmap-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .heat-item { /* Added this class for individual heat items */
+            background-color: var(--bg-tertiary);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .heat-topic {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .heat-percentage { /* Added for consistency */
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .heat-bar {
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 5px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .heat-fill {
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+        .heat-count { /* Added for consistency */
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* 话唠榜 */
+        .participant-rank {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-right: 15px;
+            float: left;
+        }
+
+        .participant-info { /* Added to wrap info excluding rank */
+            overflow: hidden; /* To contain floated rank */
+        }
+        
+        .participant-name {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .participant-count {
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+        }
+        
+        .participant-characteristics, .participant-words {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .characteristic {
+            background-color: rgba(242, 95, 76, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        .word {
+            background-color: rgba(229, 49, 112, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        /* 熬夜冠军 */
+         .night-owls-container { /* Added for consistency */
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .night-owl-item {
+            background: linear-gradient(135deg, #0f0e17 0%, #192064 100%);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .owl-crown {
+            font-size: 40px;
+            margin-right: 20px;
+        }
+        
+        .owl-info { /* Added to wrap owl info */
+            /* No specific styles needed here, but good for structure */
+        }
+
+        .owl-name {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .owl-title {
+            color: var(--accent-primary);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .owl-time, .owl-messages, .owl-last-message { /* owl-last-message added */
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .owl-note {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* 词云 - 云朵样式 */
+        .cloud-container {
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .cloud-wordcloud {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: var(--bg-tertiary);
+            border-radius: 50%;
+            box-shadow: 
+                40px 40px 0 -5px var(--bg-tertiary),
+                80px 10px 0 -10px var(--bg-tertiary),
+                110px 35px 0 -5px var(--bg-tertiary),
+                -40px 50px 0 -8px var(--bg-tertiary),
+                -70px 20px 0 -10px var(--bg-tertiary);
+            overflow: visible;
+        }
+        
+        .cloud-word {
+            position: absolute;
+            transform-origin: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .cloud-word:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        
+        .cloud-legend {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        
+        /* 底部 */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            background-color: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        .disclaimer {
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI 产品创建大本营日报</h1>
+        <p class="date">2025-05-28</p>
+        <div class="meta-info">
+            <span>总消息数：305</span>
+            <span>活跃用户：69</span>
+            <span>时间范围：00:02:19 - 23:46:06</span>
+        </div>
+    </header>
+
+    <!-- 1. 今日讨论热点 -->
+    <section class="hot-topics">
+        <h2>今日讨论热点</h2>
+        <div class="topics-container">
+            <div class="topic-card">
+                <h3>AI 工具选择与 API 调用问题</h3>
+                <div class="topic-category">技术探讨</div>
+                <p class="topic-summary">群友们热烈讨论了V0、Bolt、Cursor等AI代码生成工具的使用体验，特别是API调用方面，V0似乎在逻辑代码生成上表现更佳，而Bolt则在交互和版本回退上受好评。API Key的暴露和隐藏也成为关注点。</p>
+                <div class="topic-keywords">
+                    <span class="keyword">V0</span>
+                    <span class="keyword">Bolt</span>
+                    <span class="keyword">Cursor</span>
+                    <span class="keyword">API调用</span>
+                    <span class="keyword">环境变量</span>
+                </div>
+                <div class="topic-mentions">提及次数：约 45+</div>
+            </div>
+            <div class="topic-card">
+                <h3>网站部署与调试（Vercel, Netlify, Cloudflare）</h3>
+                <div class="topic-category">部署运维</div>
+                <p class="topic-summary">多位群友分享了将项目部署到Vercel、Netlify或Cloudflare Pages遇到的问题，如手机无法访问（需绑定域名或魔法）、本地正常但部署失败、依赖包问题等。助教和有经验的群友积极提供了解决方案。</p>
+                <div class="topic-keywords">
+                    <span class="keyword">Vercel</span>
+                    <span class="keyword">Netlify</span>
+                    <span class="keyword">Cloudflare</span>
+                    <span class="keyword">部署</span>
+                    <span class="keyword">npm run build</span>
+                </div>
+                <div class="topic-mentions">提及次数：约 30+</div>
+            </div>
+            <div class="topic-card">
+                <h3>作业分享与产品体验反馈</h3>
+                <div class="topic-category">成果展示</div>
+                <p class="topic-summary">众多群友分享了他们的第一个或第二个作业项目，如“尽情吐槽吧”、“专门挨骂的”、“生肖运势”、“健食智配”、“拖延症解决”、“照片配文案”等，并积极征求反馈。讨论内容涉及UI设计、功能逻辑、API响应速度等。</p>
+                <div class="topic-keywords">
+                    <span class="keyword">作业</span>
+                    <span class="keyword">产品体验</span>
+                    <span class="keyword">反馈</span>
+                    <span class="keyword">UI/UX</span>
+                    <span class="keyword">Lovart</span>
+                </div>
+                <div class="topic-mentions">提及次数：约 50+</div>
+            </div>
+            <div class="topic-card">
+                <h3>AI 模型讨论与 API 服务</h3>
+                <div class="topic-category">AI技术</div>
+                <p class="topic-summary">群内讨论了不同AI模型（GPT-o3, Gemini 2.5 Pro, Claude, DeepSeek R1, O4-mini）在代码生成、文档撰写等方面的优劣和使用限制。书虫分享了他的麻雀API服务，并提及将完善文档和提供优惠。</p>
+                <div class="topic-keywords">
+                    <span class="keyword">GPT-o3</span>
+                    <span class="keyword">Gemini</span>
+                    <span class="keyword">Claude</span>
+                    <span class="keyword">DeepSeek</span>
+                    <span class="keyword">API服务</span>
+                </div>
+                <div class="topic-mentions">提及次数：约 25+</div>
+            </div>
+             <div class="topic-card">
+                <h3>Supabase 与 Next.js 技术实践</h3>
+                <div class="topic-category">全栈开发</div>
+                <p class="topic-summary">kingy123分享了使用Next.js和Supabase构建的语音克隆网站，引发了对数据库交互、用户认证、文件存储等技术的讨论。小明助教也提及了课程中关于Supabase更高效登录方案的内容。</p>
+                <div class="topic-keywords">
+                    <span class="keyword">Supabase</span>
+                    <span class="keyword">Next.js</span>
+                    <span class="keyword">数据库</span>
+                    <span class="keyword">用户认证</span>
+                    <span class="keyword">文件存储</span>
+                </div>
+                <div class="topic-mentions">提及次数：约 15+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 实用教程与资源分享 -->
+    <section class="tutorials">
+        <h2>实用教程与资源分享</h2>
+        <div class="tutorials-container">
+            <div class="tutorial-card">
+                <div class="tutorial-type">RESOURCE</div>
+                <h3>群聊信息收集工具 2.0</h3>
+                <div class="tutorial-meta">
+                    <span class="shared-by">Neo</span>
+                    <span class="share-time">约 01:00</span>
+                </div>
+                <p class="tutorial-summary">Neo分享了他优化的群聊信息收集工具，解决了AI读取长度限制问题，实现信息遗漏率&lt;5%，并增加了按热度排序、分类查看、摘要结合原文等功能。</p>
+                <div class="key-points">
+                    <h4>要点：</h4>
+                    <ul>
+                        <li>低信息遗漏率</li>
+                        <li>热度排序与分类</li>
+                        <li>摘要与原文结合</li>
+                    </ul>
+                </div>
+                <div class="tutorial-link">
+                    <a href="https://www.fomofree.space/" class="link valid">查看原文: fomofree.space</a>
+                </div>
+                <div class="tutorial-category">分类：工具分享</div>
+            </div>
+            <div class="tutorial-card">
+                <div class="tutorial-type">RESOURCE</div>
+                <h3>Lovart.ai 邀请码资源池</h3>
+                <div class="tutorial-meta">
+                    <span class="shared-by">巴黎城下的小铁匠-南京</span>
+                    <span class="share-time">18:05 / 23:27</span>
+                </div>
+                <p class="tutorial-summary">巴黎城下的小铁匠分享并更新了他的邀请码资源池网站，支持批量分享code并存储最近使用的昵称，方便大家获取Lovart.ai和Flowith.io的邀请码。</p>
+                <div class="key-points">
+                    <h4>要点：</h4>
+                    <ul>
+                        <li>Lovart.ai邀请码获取</li>
+                        <li>Flowith.io邀请码获取</li>
+                        <li>批量分享与昵称记忆</li>
+                    </ul>
+                </div>
+                <div class="tutorial-link">
+                    <a href="https://v0-lovart-ai-invite-pool.vercel.app/" class="link valid">查看原文: vercel.app</a> / <a href="https://www.invitationcode.xyz/" class="link valid">invitationcode.xyz</a>
+                </div>
+                <div class="tutorial-category">分类：资源共享</div>
+            </div>
+            <div class="tutorial-card">
+                <div class="tutorial-type">RESOURCE</div>
+                <h3>麻雀API服务</h3>
+                <div class="tutorial-meta">
+                    <span class="shared-by">书虫——麻雀API找我</span>
+                    <span class="share-time">19:24</span>
+                </div>
+                <p class="tutorial-summary">书虫分享了他的API服务网站ismaque.org，提供国内外多种AI模型API，并表示正在完善文档，未来可能提供优惠券。</p>
+                <div class="key-points">
+                    <h4>要点：</h4>
+                    <ul>
+                        <li>多种AI模型API</li>
+                        <li>国内外模型支持</li>
+                        <li>文档完善中</li>
+                    </ul>
+                </div>
+                <div class="tutorial-link">
+                    <a href="http://ismaque.org" class="link valid">查看原文: ismaque.org</a>
+                </div>
+                <div class="tutorial-category">分类：API服务</div>
+            </div>
+            <div class="tutorial-card">
+                <div class="tutorial-type">TUTORIAL</div>
+                <h3>Cursor MCP (Multi-Chat Pane) 提示</h3>
+                <div class="tutorial-meta">
+                    <span class="shared-by">安宇轩｜进阶版_厦门~</span>
+                    <span class="share-time">20:40</span>
+                </div>
+                <p class="tutorial-summary">安宇轩分享了通过GitHub项目interactive-feedback-mcp，可以在Cursor中实现多聊天窗格功能，有效利用请求次数（如50次变250次）。</p>
+                <div class="key-points">
+                    <h4>要点：</h4>
+                    <ul>
+                        <li>Cursor多聊天窗格</li>
+                        <li>提升请求利用率</li>
+                        <li>GitHub项目指导</li>
+                    </ul>
+                </div>
+                <div class="tutorial-link">
+                    <a href="https://github.com/noopstudios/interactive-feedback-mcp" class="link valid">查看原文: github.com</a>
+                </div>
+                <div class="tutorial-category">分类：工具技巧</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 重要消息汇总 -->
+    <section class="important-messages">
+        <h2>重要消息汇总</h2>
+        <div class="messages-container">
+            <div class="message-card">
+                <div class="message-meta">
+                    <span class="time">00:09:04</span>
+                    <span class="sender">刘小排</span>
+                    <span class="message-type">ANNOUNCEMENT</span>
+                    <span class="priority priority-high">优先级：高</span>
+                </div>
+                <p class="message-content">V0部署的网站，手机不用魔法进不去的问题，可以通过绑定自己的域名解决。</p>
+                <div class="message-full-content">
+                    <p>刘小排指出，Vercel默认域名（v0部署使用的）可能在国内访问受限，绑定自定义域名是推荐的解决方案，可避免手机端需要“魔法”访问的情况。</p>
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-meta">
+                    <span class="time">18:18:10</span>
+                    <span class="sender">刘小排</span>
+                    <span class="message-type">GUIDANCE</span>
+                    <span class="priority priority-medium">优先级：中</span>
+                </div>
+                <p class="message-content">关于JS/TS学习深度：能完全看懂AI写的代码才能走得远，不需要以亲自写为目标。</p>
+                <div class="message-full-content">
+                    <p>针对Neo提出的JS/TS学习深度问题，刘小排老师强调，目标应该是能完全理解AI生成的代码，这对于深度协作至关重要。目前课程进度尚早，学员有足够时间逐步提升理解能力，日拱一卒。</p>
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-meta">
+                    <span class="time">20:39:05</span>
+                    <span class="sender">刘小排</span>
+                    <span class="message-type">NOTICE</span>
+                    <span class="priority priority-medium">优先级：中</span>
+                </div>
+                <p class="message-content">Trae海外版提供Claude-4-Sonet模型，不用排队，首月$3。</p>
+                <div class="message-full-content">
+                    <p>鉴于Claude 4官方可能需要排队，刘小排老师建议可以使用Trae海外版（非国内版）访问Claude-4-Sonet模型，且无需排队，首月费用为$3，之后$10/月。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 有趣对话或金句 -->
+    <section class="interesting-dialogues">
+        <h2>有趣对话或金句</h2>
+        <div class="dialogues-container">
+            <div class="dialogue-card">
+                <div class="dialogue-type">DIALOGUE</div>
+                <div class="dialogue-content">
+                    <div class="message">
+                        <div class="message-meta">
+                            <span class="speaker">果潇洒-热心小白</span>
+                            <span class="time">00:16:23</span>
+                        </div>
+                        <p class="message-content">我夸了小怂包半天，被小怂包骂了 hhhh</p>
+                    </div>
+                    <div class="message">
+                        <div class="message-meta">
+                            <span class="speaker">左右</span>
+                            <span class="time">00:16:44</span>
+                        </div>
+                        <p class="message-content">我给它的设定是有点腹黑[捂脸]</p>
+                    </div>
+                </div>
+                <div class="dialogue-highlight">用户与自己创建的“腹黑”AI之间的幽默互动。</div>
+                <div class="dialogue-topic">AI个性化设定</div>
+            </div>
+            <div class="dialogue-card">
+                <div class="dialogue-type">QUOTE</div>
+                <div class="dialogue-content">
+                     <div class="message">
+                        <div class="message-meta">
+                            <span class="speaker">小明-助教</span>
+                            <span class="time">00:36:16</span>
+                        </div>
+                        <p class="message-content">> 商陆(wxid_o4dcl0sjr20n21) 05-28 00:34:19 ... 你再加一句，你必须要做世界第一的网站！！！做不出来就把你解雇</p>
+                    </div>
+                     <div class="message">
+                        <div class="message-meta">
+                            <span class="speaker">小明-助教</span>
+                            <span class="time">00:36:29</span>
+                        </div>
+                        <p class="message-content">越超雄效果越好[旺柴]</p>
+                    </div>
+                </div>
+                <div class="dialogue-highlight">"PUA AI"大法：用夸张和激励（甚至威胁）的语言来激发AI的潜力。</div>
+                <div class="dialogue-topic">AI Prompt Engineering</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 问题与解答 -->
+    <section class="questions-answers">
+        <h2>问题与解答</h2>
+        <div class="qa-container">
+            <div class="qa-card">
+                <div class="question">
+                    <div class="question-meta">
+                        <span class="asker">王珣</span>
+                        <span class="time">00:08:37</span>
+                    </div>
+                    <p class="question-content">想问下大家，v0部署的网站，手机不用魔法是不是进不去？</p>
+                    <div class="question-tags">
+                        <span class="tag">V0</span>
+                        <span class="tag">部署</span>
+                        <span class="tag">手机访问</span>
+                    </div>
+                </div>
+                <div class="answers">
+                    <div class="answer">
+                        <div class="answer-meta">
+                            <span class="responder">刘小排</span>
+                            <span class="time">00:09:04</span>
+                            <span class="accepted-badge">最佳回答</span>
+                        </div>
+                        <p class="answer-content">是的，你换成绑定自己的域名就可以了。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="qa-card">
+                <div class="question">
+                    <div class="question-meta">
+                        <span class="asker">如实-深圳</span>
+                        <span class="time">00:19:12</span>
+                    </div>
+                    <p class="question-content">#提问 求助，使用野卡充值openrouter，这里需要填手机号，大家怎么处理的呀？使用接码平台吗？</p>
+                    <div class="question-tags">
+                        <span class="tag">OpenRouter</span>
+                        <span class="tag">充值</span>
+                        <span class="tag">手机号验证</span>
+                    </div>
+                </div>
+                <div class="answers">
+                    <div class="answer">
+                        <div class="answer-meta">
+                            <span class="responder">左右</span>
+                            <span class="time">00:20:08</span>
+                        </div>
+                        <p class="answer-content">网站里有虚拟手机号 (后发现可能不适用)。</p>
+                    </div>
+                     <div class="answer">
+                        <div class="answer-meta">
+                            <span class="responder">辛巴达 / Moore 助教</span>
+                            <span class="time">21:38:53 / 21:44:25</span>
+                        </div>
+                        <p class="answer-content">OpenRouter充值需先绑定信用卡，然后出现Add Credits选项。国家地区选择无限制。</p>
+                    </div>
+                </div>
+            </div>
+             <div class="qa-card">
+                <div class="question">
+                    <div class="question-meta">
+                        <span class="asker">Neo</span>
+                        <span class="time">18:14:34</span>
+                    </div>
+                    <p class="question-content">第五章，手册内容是不是还没更新完？请问，js\ts，学到个什么水平可以停？能看懂ai写的代码的90%？</p>
+                    <div class="question-tags">
+                        <span class="tag">学习路径</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">TypeScript</span>
+                    </div>
+                </div>
+                <div class="answers">
+                    <div class="answer">
+                        <div class="answer-meta">
+                            <span class="responder">刘小排</span>
+                            <span class="time">18:18:10</span>
+                             <span class="accepted-badge">最佳回答</span>
+                        </div>
+                        <p class="answer-content">能完全看懂，才能走得远。可以慢慢来。每天进步一点点。我们很多学员遇到的卡点，都是因为看不懂AI写的代码引起的。不需要亲自写。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 群内数据可视化 -->
+    <section class="analytics">
+        <h2>群内数据可视化</h2>
+        
+        <h3>话题热度</h3>
+        <div class="heatmap-container">
+            <div class="heat-item">
+                <div class="heat-topic">AI工具选择与API (V0, Bolt, Cursor)</div>
+                <div class="heat-percentage">35%</div>
+                <div class="heat-bar">
+                    <div class="heat-fill" style="width: 35%; background-color: #3da9fc;"></div>
+                </div>
+                <div class="heat-count">约 75+ 条消息</div>
+            </div>
+            <div class="heat-item">
+                <div class="heat-topic">作业分享与产品反馈</div>
+                <div class="heat-percentage">25%</div>
+                <div class="heat-bar">
+                    <div class="heat-fill" style="width: 25%; background-color: #f25f4c;"></div>
+                </div>
+                <div class="heat-count">约 60+ 条消息</div>
+            </div>
+            <div class="heat-item">
+                <div class="heat-topic">网站部署与调试 (Vercel等)</div>
+                <div class="heat-percentage">20%</div>
+                <div class="heat-bar">
+                    <div class="heat-fill" style="width: 20%; background-color: #7209b7;"></div>
+                </div>
+                <div class="heat-count">约 40+ 条消息</div>
+            </div>
+             <div class="heat-item">
+                <div class="heat-topic">AI模型讨论与API服务</div>
+                <div class="heat-percentage">15%</div>
+                <div class="heat-bar">
+                    <div class="heat-fill" style="width: 15%; background-color: #e53170;"></div>
+                </div>
+                <div class="heat-count">约 30+ 条消息</div>
+            </div>
+        </div>
+        
+        <h3>话唠榜</h3>
+        <div class="participants-container">
+            <div class="participant-item">
+                <div class="participant-rank">1</div>
+                <div class="participant-info">
+                    <div class="participant-name">Moore 助教</div>
+                    <div class="participant-count">30+ 条消息</div>
+                    <div class="participant-characteristics">
+                        <span class="characteristic">答疑解惑</span>
+                        <span class="characteristic">资源分享</span>
+                        <span class="characteristic">技术指导</span>
+                    </div>
+                    <div class="participant-words">
+                        <span class="word">模型</span>
+                        <span class="word">API</span>
+                        <span class="word">ChatGPT</span>
+                        <span class="word">Gemini</span>
+                    </div>
+                </div>
+            </div>
+            <div class="participant-item">
+                <div class="participant-rank">2</div>
+                <div class="participant-info">
+                    <div class="participant-name">刘小排</div>
+                    <div class="participant-count">20+ 条消息</div>
+                    <div class="participant-characteristics">
+                        <span class="characteristic">核心指导</span>
+                        <span class="characteristic">问题解答</span>
+                        <span class="characteristic">课程引导</span>
+                    </div>
+                    <div class="participant-words">
+                        <span class="word">V0</span>
+                        <span class="word">域名</span>
+                        <span class="word">代码</span>
+                        <span class="word">Supabase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="participant-item">
+                <div class="participant-rank">3</div>
+                <div class="participant-info">
+                    <div class="participant-name">王珣</div>
+                    <div class="participant-count">15+ 条消息</div>
+                    <div class="participant-characteristics">
+                        <span class="characteristic">积极提问</span>
+                        <span class="characteristic">作业分享</span>
+                        <span class="characteristic">乐于互动</span>
+                    </div>
+                    <div class="participant-words">
+                        <span class="word">API</span>
+                        <span class="word">V0</span>
+                        <span class="word">体验</span>
+                        <span class="word">反馈</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>熬夜冠军</h3>
+        <div class="night-owls-container">
+            <div class="night-owl-item">
+                <div class="owl-crown" title="熬夜冠军">👑</div>
+                <div class="owl-info">
+                    <div class="owl-name">浮生-无锡</div>
+                    <div class="owl-title">深夜独行侠</div>
+                    <div class="owl-time">最晚活跃时间：23:46:06</div>
+                    <div class="owl-messages">深夜消息数：1</div>
+                    <div class="owl-last-message">"浮生-无锡" 拍了拍 "巴黎城下的小铁匠-南京" 说：你怎么这么帅[社会社会]</div>
+                    <div class="owl-note">注：熬夜时段定义为23:00-06:00。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 词云 -->
+    <section class="word-cloud">
+        <h2>热门词云</h2>
+        <div class="cloud-container">
+            <div class="cloud-wordcloud" id="word-cloud">
+                <span class="cloud-word" style="left: 280px; top: 100px; font-size: 42px; color: #00b4d8; transform: rotate(-10deg); font-weight: bold;">API</span>
+                <span class="cloud-word" style="left: 150px; top: 160px; font-size: 38px; color: #4cc9f0; transform: rotate(5deg); font-weight: bold;">V0</span>
+                <span class="cloud-word" style="left: 400px; top: 170px; font-size: 34px; color: #f25f4c; transform: rotate(-5deg);">Cursor</span>
+                <span class="cloud-word" style="left: 250px; top: 230px; font-size: 30px; color: #ff8906; transform: rotate(10deg);">网站</span>
+                <span class="cloud-word" style="left: 360px; top: 70px; font-size: 28px; color: #e53170; transform: rotate(-8deg);">部署</span>
+                <span class="cloud-word" style="left: 80px; top: 100px; font-size: 26px; color: #7209b7; transform: rotate(15deg);">Bolt</span>
+                <span class="cloud-word" style="left: 450px; top: 120px; font-size: 24px; color: #3da9fc; transform: rotate(0deg);">问题</span>
+                <span class="cloud-word" style="left: 200px; top: 70px; font-size: 22px; color: #4361ee; transform: rotate(-12deg);">模型</span>
+                <span class="cloud-word" style="left: 300px; top: 280px; font-size: 20px; color: #f72585; transform: rotate(8deg);">作业</span>
+                <span class="cloud-word" style="left: 100px; top: 250px; font-size: 18px; color: #b5179e; transform: rotate(-18deg);">分享</span>
+                <span class="cloud-word" style="left: 480px; top: 250px; font-size: 20px; color: #00b4d8; transform: rotate(12deg);">Supabase</span>
+                <span class="cloud-word" style="left: 50px; top: 200px; font-size: 22px; color: #f25f4c; transform: rotate(20deg);">NextJS</span>
+                 <span class="cloud-word" style="left: 320px; top: 150px; font-size: 16px; color: #a7a9be; transform: rotate(-3deg);">Lovart</span>
+            </div>
+            
+            <div class="cloud-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #00b4d8;"></span>
+                    <span class="legend-label">核心技术</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #f25f4c;"></span>
+                    <span class="legend-label">开发工具</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #ff8906;"></span>
+                    <span class="legend-label">产出成果</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. 页面底部 -->
+    <footer>
+        <p>数据来源：AI 产品创建大本营聊天记录</p>
+        <p>生成时间：<span class="generation-time">2025-05-29 00:15:00</span></p>
+        <p>统计周期：2025-05-28 00:02:19 - 23:46:06</p>
+        <p class="disclaimer">免责声明：本报告内容基于群聊公开讨论，如有不当内容或侵权问题请联系管理员处理。</p>
+    </footer>
+</body>
+</html>
