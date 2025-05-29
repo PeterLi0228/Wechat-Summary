@@ -13,56 +13,31 @@ const getBasePath = (): string => {
   return '';
 };
 
-// 自动发现可用的聊天文件
-const discoverChatFiles = async (): Promise<string[]> => {
-  const files: string[] = [];
-  const basePath = getBasePath();
-  
-  // 生成可能的日期范围（最近60天）
-  const today = new Date();
-  const dates: string[] = [];
-  
-  for (let i = 0; i < 60; i++) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
-    const dateStr = date.toISOString().slice(0, 10).replace(/-/g, '');
-    dates.push(dateStr);
-  }
-  
-  // 检查每个日期的文件是否存在
-  for (const dateStr of dates) {
-    // 检查TXT文件
-    try {
-      const response = await fetch(`${basePath}/chatlogs/${dateStr}.txt`, { method: 'HEAD' });
-      if (response.ok) {
-        files.push(`${dateStr}.txt`);
-      }
-    } catch (error) {
-      // 文件不存在，忽略
+// 从index.json读取可用的聊天文件
+const loadFileIndex = async (): Promise<string[]> => {
+  try {
+    const basePath = getBasePath();
+    const response = await fetch(`${basePath}/chatlogs/index.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to load file index: ${response.status}`);
     }
-    
-    // 检查HTML文件
-    try {
-      const response = await fetch(`${basePath}/chatlogs/${dateStr}.html`, { method: 'HEAD' });
-      if (response.ok) {
-        files.push(`${dateStr}.html`);
-      }
-    } catch (error) {
-      // 文件不存在，忽略
-    }
+    const data = await response.json();
+    return data.files || [];
+  } catch (error) {
+    console.error('Failed to load file index:', error);
+    // 如果无法加载索引文件，返回空数组
+    return [];
   }
-  
-  return files;
 };
 
 // 获取所有可用的聊天日期
 export const getChatDates = async (): Promise<ChatDate[]> => {
   try {
-    // 自动发现可用的文件
-    const availableFiles = await discoverChatFiles();
+    // 从索引文件读取可用的文件
+    const availableFiles = await loadFileIndex();
     const dateMap = new Map<string, Partial<ChatDate>>();
     
-    // 处理发现的文件
+    // 处理文件列表
     for (const filename of availableFiles) {
       const date = parseFileDate(filename);
       if (date) {
@@ -199,18 +174,18 @@ export const searchAllChatFiles = async (
   }
 };
 
-// 刷新数据（重新发现文件）
+// 刷新数据（重新读取文件索引）
 export const refreshChatData = async (): Promise<void> => {
   console.log('Refreshing chat data...');
   
   // 清除缓存
   localStorage.removeItem('chatDatesCache');
   
-  // 重新发现文件
+  // 重新读取文件索引
   try {
-    const files = await discoverChatFiles();
-    console.log(`Discovered ${files.length} files:`, files);
+    const files = await loadFileIndex();
+    console.log(`Loaded ${files.length} files from index:`, files);
   } catch (error) {
-    console.warn('Failed to discover files during refresh:', error);
+    console.warn('Failed to load file index during refresh:', error);
   }
 }; 
