@@ -22,20 +22,13 @@
     <link rel="icon" type="image/x-icon" href="/wechat-summary/favicon.ico">
     
     <script>
-      // GitHub Pages SPA redirect handling
-      (function() {
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
-          history.replaceState(null, null, redirect);
-        }
-      })();
+      // GitHub Pages SPA redirect
+      sessionStorage.redirect = location.href;
     </script>
-    <script type="module" crossorigin src="/wechat-summary/assets/index-B02C0uR3.js"></script>
-    <link rel="stylesheet" crossorigin href="/wechat-summary/assets/index-D1DPJwK7.css">
+    <meta http-equiv="refresh" content="0;URL='/wechat-summary/'">
   </head>
 
   <body>
     <div id="root"></div>
   </body>
-</html>
+</html> 
