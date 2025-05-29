@@ -13,18 +13,16 @@ const getBasePath = (): string => {
   return '';
 };
 
-// 发现可用的聊天文件
+// 自动发现可用的聊天文件
 const discoverChatFiles = async (): Promise<string[]> => {
   const files: string[] = [];
   const basePath = getBasePath();
   
-  // 尝试一些常见的日期格式来发现文件
-  // 这里可以根据实际需要扩展日期范围
+  // 生成可能的日期范围（最近60天）
   const today = new Date();
   const dates: string[] = [];
   
-  // 生成最近30天的日期
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 60; i++) {
     const date = new Date(today);
     date.setDate(date.getDate() - i);
     const dateStr = date.toISOString().slice(0, 10).replace(/-/g, '');
@@ -54,23 +52,18 @@ const discoverChatFiles = async (): Promise<string[]> => {
     }
   }
   
-  // 如果没有发现任何文件，回退到已知文件
-  if (files.length === 0) {
-    return ['20250526.txt', '20250526.html'];
-  }
-  
   return files;
 };
 
 // 获取所有可用的聊天日期
 export const getChatDates = async (): Promise<ChatDate[]> => {
   try {
-    // 尝试发现可用的文件
-    const knownFiles = await discoverChatFiles();
-    
+    // 自动发现可用的文件
+    const availableFiles = await discoverChatFiles();
     const dateMap = new Map<string, Partial<ChatDate>>();
     
-    for (const filename of knownFiles) {
+    // 处理发现的文件
+    for (const filename of availableFiles) {
       const date = parseFileDate(filename);
       if (date) {
         if (!dateMap.has(date)) {
@@ -87,25 +80,25 @@ export const getChatDates = async (): Promise<ChatDate[]> => {
         if (filename.endsWith('.html')) {
           chatDate.hasHtml = true;
         } else if (filename.endsWith('.txt')) {
+          chatDate.hasTxt = true;
           // 读取TXT文件来获取消息统计
           try {
             const txtContent = await fetchChatFile(date, 'txt');
             const messageCount = estimateMessageCount(txtContent);
-            if (messageCount > 0) {
-              chatDate.hasTxt = true;
-              chatDate.messageCount = messageCount;
-            }
+            chatDate.messageCount = messageCount;
           } catch (error) {
             console.warn(`Failed to read txt file for ${date}:`, error);
-            // 如果无法读取文件，不标记为有TXT文件
+            // 如果无法读取文件，设置默认值
+            chatDate.messageCount = 0;
           }
         }
       }
     }
     
     // 转换为数组并按日期排序（最新的在前）
+    // 只显示有TXT文件的日期
     const chatDates = Array.from(dateMap.values())
-      .filter(item => item.hasTxt && item.messageCount! > 0) // 只显示有TXT文件且有消息的日期
+      .filter(item => item.hasTxt && item.messageCount! > 0)
       .map(item => ({
         date: item.date!,
         messageCount: item.messageCount || 0,
@@ -206,17 +199,17 @@ export const searchAllChatFiles = async (
   }
 };
 
-// 刷新数据（重新读取文件列表）
+// 刷新数据（重新发现文件）
 export const refreshChatData = async (): Promise<void> => {
   console.log('Refreshing chat data...');
   
   // 清除缓存
   localStorage.removeItem('chatDatesCache');
   
-  // 重新发现文件（这会在下次调用getChatDates时生效）
+  // 重新发现文件
   try {
-    await discoverChatFiles();
-    console.log('File discovery completed');
+    const files = await discoverChatFiles();
+    console.log(`Discovered ${files.length} files:`, files);
   } catch (error) {
     console.warn('Failed to discover files during refresh:', error);
   }
